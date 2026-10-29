@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { MOCK_TESTS_DATA } from '../data/mockTestsData';
-import { 
-  Clock, 
-  Award, 
-  CheckCircle, 
-  XCircle, 
-  HelpCircle, 
-  AlertTriangle, 
-  RotateCcw, 
-  ArrowRight, 
-  ArrowLeft, 
-  Play, 
-  Check, 
+import {
+  Clock,
+  Award,
+  CheckCircle,
+  XCircle,
+  HelpCircle,
+  AlertTriangle,
+  RotateCcw,
+  ArrowRight,
+  ArrowLeft,
+  Play,
+  Check,
   Sparkles,
   BarChart3,
   BookmarkCheck
@@ -98,7 +98,7 @@ export default function MockTestsSection() {
   const handleSubmitTest = () => {
     const answeredCount = Object.keys(userAnswers).length;
     const totalQ = selectedTest.questions.length;
-    
+
     if (answeredCount < totalQ) {
       const confirmSubmit = window.confirm(
         `You have answered ${answeredCount} out of ${totalQ} questions. Are you sure you want to submit?`
@@ -156,7 +156,7 @@ export default function MockTestsSection() {
   return (
     <section id="mock-tests-section" className="py-12 lg:py-16 bg-slate-100 min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         {!isTestActive && !isTestFinished && (
           <div className="max-w-3xl mb-8">
@@ -235,7 +235,7 @@ export default function MockTestsSection() {
         {/* 2. ACTIVE TEST ENGINE (TCS iON / CBT Style) */}
         {isTestActive && currentQ && (
           <div className="bg-white rounded-2xl shadow-xl border border-slate-300 overflow-hidden">
-            
+
             {/* Top Bar with Timer and Progress */}
             <div className="bg-navy-900 text-white p-4 sm:px-6 flex flex-wrap items-center justify-between gap-4 border-b border-navy-800">
               <div>
@@ -249,11 +249,10 @@ export default function MockTestsSection() {
 
               <div className="flex items-center gap-4">
                 {/* Timer Box */}
-                <div className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl border font-mono font-bold text-sm ${
-                  timeLeftSeconds < 120 
-                    ? 'bg-red-500/20 border-red-500 text-red-300 animate-pulse' 
+                <div className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl border font-mono font-bold text-sm ${timeLeftSeconds < 120
+                    ? 'bg-red-500/20 border-red-500 text-red-300 animate-pulse'
                     : 'bg-navy-800 border-navy-700 text-saffron-400'
-                }`}>
+                  }`}>
                   <Clock className="w-4 h-4" />
                   <span>{formatTime(timeLeftSeconds)}</span>
                 </div>
@@ -269,7 +268,7 @@ export default function MockTestsSection() {
 
             {/* Test Body: Question Area (left) + Question Palette (right) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[480px]">
-              
+
               {/* Question & Options Area */}
               <div className="lg:col-span-8 p-5 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-200">
                 <div>
@@ -297,17 +296,15 @@ export default function MockTestsSection() {
                         <div
                           key={idx}
                           onClick={() => handleSelectOption(currentQ.id, idx)}
-                          className={`p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition-all flex items-start gap-3.5 ${
-                            isSelected
+                          className={`p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition-all flex items-start gap-3.5 ${isSelected
                               ? 'border-saffron-500 bg-saffron-50/70 shadow-sm text-slate-900'
                               : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700'
-                          }`}
+                            }`}
                         >
-                          <div className={`w-6 h-6 rounded-full font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
-                            isSelected
+                          <div className={`w-6 h-6 rounded-full font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 transition-colors ${isSelected
                               ? 'bg-saffron-500 text-white'
                               : 'bg-slate-200 text-slate-600'
-                          }`}>
+                            }`}>
                             {optionLetter}
                           </div>
                           <div className="text-xs sm:text-sm font-medium leading-relaxed">
@@ -331,11 +328,10 @@ export default function MockTestsSection() {
                     </button>
                     <button
                       onClick={() => handleToggleReview(currentQ.id)}
-                      className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-colors ${
-                        markedForReview[currentQ.id]
+                      className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-colors ${markedForReview[currentQ.id]
                           ? 'bg-purple-100 border-purple-300 text-purple-800 font-bold'
                           : 'border-slate-200 hover:bg-slate-100 text-slate-600'
-                      }`}
+                        }`}
                     >
                       {markedForReview[currentQ.id] ? 'Marked for Review ★' : 'Mark for Review'}
                     </button>
@@ -448,11 +444,11 @@ export default function MockTestsSection() {
         {/* 3. POST-TEST RESULTS & SCORECARD DISPLAY */}
         {isTestFinished && results && (
           <div className="space-y-6">
-            
+
             {/* Scorecard Hero Banner */}
             <div className="bg-gradient-to-br from-navy-900 to-navy-800 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-navy-700">
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                
+
                 <div className="space-y-2 text-center md:text-left">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-saffron-500/20 text-saffron-400 text-xs font-bold border border-saffron-500/30">
                     <Award className="w-4 h-4" />
@@ -511,25 +507,22 @@ export default function MockTestsSection() {
                 <div className="flex items-center gap-1 text-xs">
                   <button
                     onClick={() => setReviewTab('all')}
-                    className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
-                      reviewTab === 'all' ? 'bg-navy-900 text-white font-bold' : 'bg-slate-100 text-slate-600'
-                    }`}
+                    className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${reviewTab === 'all' ? 'bg-navy-900 text-white font-bold' : 'bg-slate-100 text-slate-600'
+                      }`}
                   >
                     All ({selectedTest.questions.length})
                   </button>
                   <button
                     onClick={() => setReviewTab('incorrect')}
-                    className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
-                      reviewTab === 'incorrect' ? 'bg-red-600 text-white font-bold' : 'bg-slate-100 text-slate-600'
-                    }`}
+                    className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${reviewTab === 'incorrect' ? 'bg-red-600 text-white font-bold' : 'bg-slate-100 text-slate-600'
+                      }`}
                   >
                     Incorrect ({results.incorrect})
                   </button>
                   <button
                     onClick={() => setReviewTab('correct')}
-                    className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
-                      reviewTab === 'correct' ? 'bg-emerald-600 text-white font-bold' : 'bg-slate-100 text-slate-600'
-                    }`}
+                    className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${reviewTab === 'correct' ? 'bg-emerald-600 text-white font-bold' : 'bg-slate-100 text-slate-600'
+                      }`}
                   >
                     Correct ({results.correct})
                   </button>
@@ -570,13 +563,12 @@ export default function MockTestsSection() {
                 return (
                   <div
                     key={q.id}
-                    className={`p-5 sm:p-6 rounded-2xl bg-white border-2 shadow-sm ${
-                      isCorrect 
-                        ? 'border-emerald-200' 
-                        : isUnattempted 
-                        ? 'border-slate-200' 
-                        : 'border-red-200'
-                    }`}
+                    className={`p-5 sm:p-6 rounded-2xl bg-white border-2 shadow-sm ${isCorrect
+                        ? 'border-emerald-200'
+                        : isUnattempted
+                          ? 'border-slate-200'
+                          : 'border-red-200'
+                      }`}
                   >
                     <div className="flex items-center justify-between mb-3 text-xs">
                       <span className="font-bold text-slate-500">
